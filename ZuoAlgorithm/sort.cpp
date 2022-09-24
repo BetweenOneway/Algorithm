@@ -1,6 +1,6 @@
-#include "sort.h"
+﻿#include "sort.h"
 
-void swap(int& i,int& j)
+void swap(int& i, int& j)
 {
 	if (i == j)
 	{
@@ -19,11 +19,11 @@ void bubbleSort(vector<int>& toSort)
 	}
 	for (int i = 1; i < toSort.size(); i++)
 	{
-		for (int j = 1; j < toSort.size()-i+1; j++)
+		for (int j = 1; j < toSort.size() - i + 1; j++)
 		{
 			if (toSort[j - 1] > toSort[j])
 			{
-				swap(toSort[j-1],toSort[j]);
+				swap(toSort[j - 1], toSort[j]);
 			}
 		}
 	}
@@ -38,7 +38,7 @@ void selectSort(vector<int>& toSort)
 	for (int i = 0; i < toSort.size(); i++)
 	{
 		int minIndex = i;
-		for (int j=i;j<toSort.size();j++)
+		for (int j = i; j < toSort.size(); j++)
 		{
 			if (toSort[j] < toSort[minIndex])
 			{
@@ -49,10 +49,10 @@ void selectSort(vector<int>& toSort)
 	}
 }
 
-void merge(int startIndex,int endIndex,vector<int>& data)
+void merge(int startIndex, int endIndex, vector<int>& data)
 {
 	int size = endIndex - startIndex + 1;
-	vector<int> temp(size,0);
+	vector<int> temp(size, 0);
 	int mid = startIndex + endIndex >> 1;
 	int l = startIndex;
 	int r = mid + 1;
@@ -61,13 +61,13 @@ void merge(int startIndex,int endIndex,vector<int>& data)
 	{
 		if (data[l] < data[r])
 		{
-			temp[index]=data[l];
+			temp[index] = data[l];
 			index++;
 			l++;
 		}
 		else
 		{
-			temp[index]=data[r];
+			temp[index] = data[r];
 			index++;
 			r++;
 		}
@@ -85,27 +85,27 @@ void merge(int startIndex,int endIndex,vector<int>& data)
 	{
 		while (r <= endIndex)
 		{
-			temp[index]=data[r];
+			temp[index] = data[r];
 			index++;
 			r++;
 		}
 	}
-	for (int i = startIndex,j=0; i <= endIndex; i++,j++)
+	for (int i = startIndex, j = 0; i <= endIndex; i++, j++)
 	{
 		data[i] = temp[j];
 	}
 }
 //[startIndex,endIndex]
-void partition(int startIndex,int endIndex,vector<int>& data)
+void partition(int startIndex, int endIndex, vector<int>& data)
 {
 	if (startIndex == endIndex)
 	{
 		return;
 	}
-	int mid = startIndex + endIndex >> 1; 
-	partition(startIndex,mid,data);
-	partition(mid+1, endIndex, data);
-	merge(startIndex,endIndex,data);
+	int mid = startIndex + endIndex >> 1;
+	partition(startIndex, mid, data);
+	partition(mid + 1, endIndex, data);
+	merge(startIndex, endIndex, data);
 }
 
 void mergeSort(vector<int>& toSort)
