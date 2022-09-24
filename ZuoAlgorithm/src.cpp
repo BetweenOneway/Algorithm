@@ -85,7 +85,7 @@ void testrevetLinkedList()
 int main()
 {
 	testMergeSort();
-	testrevetLinkedList();
+	//testrevetLinkedList();
 	system("pause");
 	return 0;
 }

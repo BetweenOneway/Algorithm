@@ -102,7 +102,7 @@ void partition(int startIndex, int endIndex, vector<int>& data)
 	{
 		return;
 	}
-	int mid = startIndex + endIndex >> 1;
+	int mid = startIndex + (endIndex-startIndex >> 1);
 	partition(startIndex, mid, data);
 	partition(mid + 1, endIndex, data);
 	merge(startIndex, endIndex, data);
