@@ -101,8 +101,8 @@ void partition(int startIndex, int endIndex, vector<int>& data)
 
 void mergeSort(vector<int>& toSort)
 {
-	int minIndex = toSort.size() - 1;
-	partition(0, minIndex, toSort);
+	int maxIndex = toSort.size() - 1;
+	partition(0, maxIndex, toSort);
 }
 
 void insertSort(vector<int>& toSort)
