@@ -113,3 +113,25 @@ void mergeSort(vector<int>& toSort)
 	int minIndex = toSort.size() - 1;
 	partition(0, minIndex, toSort);
 }
+
+void insertSort(vector<int>& toSort)
+{
+	if (toSort.empty() || 1 == toSort.size())
+	{
+		return;
+	}
+	for (int i = 1; i < toSort.size(); i++)
+	{
+		for (int j = i; j > 0; j--)
+		{
+			if (toSort[j] < toSort[j - 1])
+			{
+				swap(toSort[j], toSort[j - 1]);
+			}
+			else
+			{
+				break;
+			}
+		}
+	}
+}

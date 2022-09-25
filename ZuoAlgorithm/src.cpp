@@ -58,6 +58,16 @@ void testMergeSort()
 	printVector(data);
 }
 
+void testInsertSort()
+{
+	vector<int> data;
+	generateVerifyData(data, 0, 10, 10);
+	cout << "before sort" << endl;
+	printVector(data);
+	insertSort(data);
+	cout << "after sort" << endl;
+	printVector(data);
+}
 void testrevetLinkedList()
 {
 	Node* head = new Node();
@@ -103,8 +113,9 @@ void verifyExamicQuestions()
 int main()
 {
 	//testMergeSort();
+	testInsertSort();
 	//testrevetLinkedList();
-	verifyExamicQuestions();
+	//verifyExamicQuestions();
 	system("pause");
 	return 0;
 }
