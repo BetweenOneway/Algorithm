@@ -1,6 +1,6 @@
-﻿#include "sort.h"
-
-
+﻿#include <time.h>
+#include "sort.h"
+#include "common.h"
 
 void bubbleSort(vector<int>& toSort)
 {
@@ -86,6 +86,7 @@ void merge(int startIndex, int endIndex, vector<int>& data)
 		data[i] = temp[j];
 	}
 }
+
 //[startIndex,endIndex]
 void partition(int startIndex, int endIndex, vector<int>& data)
 {
@@ -125,4 +126,55 @@ void insertSort(vector<int>& toSort)
 			}
 		}
 	}
+}
+
+/*
+荷兰国旗问题
+以最右侧值为标准
+左边的值都小于标准值；中间的值都等于标准值；右边的值都大于标准值
+*/
+vector<int> netherlandNationalFlag(vector<int>& toSort, int l, int r)
+{
+	int lessBorder = l - 1;
+	int moreBorder = r;
+	while (l < moreBorder)
+	{
+		if (toSort[l]<toSort[r])
+		{
+			swap(toSort[++lessBorder], toSort[l++]);
+		}
+		else if (toSort[l] > toSort[r])
+		{
+			swap(toSort[--moreBorder],toSort[l++]);
+		}
+		else
+		{
+			l++;
+		}
+	}
+	swap(toSort[r], toSort[moreBorder]);
+	return vector<int>{lessBorder, moreBorder};
+}
+
+void quickSort(vector<int>& toSort, int l, int r)
+{
+	if (l < r)
+	{
+		//随机任选一个数，放到最右边，作为划分的标准值
+		srand(time(0));
+		int pos = rand() % (r-l+1) + l;
+		swap(toSort[r],toSort[pos]);
+		vector<int> result = netherlandNationalFlag(toSort,l,r);
+		quickSort(toSort, l, result[0]);
+		quickSort(toSort,result[1],r);
+	}
+}
+
+void quickSort(vector<int>& toSort)
+{
+	if (toSort.size() < 2)
+	{
+		return;
+	}
+	quickSort(toSort, 0, toSort.size() - 1);
 }

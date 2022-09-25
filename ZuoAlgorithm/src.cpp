@@ -2,6 +2,7 @@
 #include "sort.h"
 #include "verifyExamicQuestion.h"
 #include "verifyLinkedList.h"
+#include "verifySort.h"
 
 using namespace std;
 
