@@ -1,15 +1,6 @@
 ﻿#include "sort.h"
 
-void swap(int& i, int& j)
-{
-	if (i == j)
-	{
-		return;
-	}
-	i = i^j;
-	j = i^j;
-	i = i^j;
-}
+
 
 void bubbleSort(vector<int>& toSort)
 {

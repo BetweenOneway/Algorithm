@@ -1,16 +1,5 @@
-﻿#include <iostream>
-#include <algorithm>
-#include "sort.h"
-#include "verifyLinkedList.h"
-
-using namespace std;
-
-#include <time.h>
-
-
+﻿#include "common.h"
 #include "examic_questions.h"
-
-
 
 void verifyExamicQuestions()
 {
@@ -18,7 +7,7 @@ void verifyExamicQuestions()
 	int ret = getOccurenceOddNumber(verifyData1);
 	if (ret == 1)
 	{
-		cout << "Found correct number:"<<ret << endl;
+		cout << "Found correct number:" << ret << endl;
 	}
 	else
 	{
@@ -28,11 +17,4 @@ void verifyExamicQuestions()
 	vector<int> ret2 = get2OccurenceOddNumber(verifyData2);
 	cout << "Found 2 numbers:";
 	printVector(ret2);
-}
-int main()
-{
-	
-	//verifyExamicQuestions();
-	system("pause");
-	return 0;
 }
