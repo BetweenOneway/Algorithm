@@ -33,3 +33,58 @@ vector<int> get2OccurenceOddNumber(vector<int> inputData)
 	result = result ^ result1;
 	return vector<int>{result, result1};
 }
+
+int merge(vector<int>& arr, int l, int m, int r)
+{
+	vector<int> temp(r - l + 1,0);
+	int p1 = l;
+	int p2 = m + 1;
+	int res = 0;//记录小和的值
+	int i = 0;//temp数组的下标
+	while (p1 <= m && p2 <= r)
+	{
+		//只要arr[p1]<arr[p2]，说明从p2到r的所有值都比arr[p1]大
+		//求小和的时候都要加上p1
+		res += arr[p1] < arr[p2] ? (r - p2 + 1)*arr[p1] : 0;
+		temp[i++] = arr[p1] < arr[p2] ? arr[p1++] : arr[p2++];
+	}
+	//不管左边还是右边有剩下的都不需要再计算小和
+	//因为同一侧merge的时候已经求过小和，无需重复计算
+	while (p1 <= m)
+	{
+		temp[i++] = arr[p1++];
+	}
+	while (p2 <= r)
+	{
+		temp[i++] = arr[p2++];
+	}
+	for (i = 0; i < temp.size(); i++)
+	{
+		arr[l + i] = temp[i];
+	}
+	return res;
+}
+/*
+arr 待排序的数组 
+l 数组最左侧下标
+r 数组最右侧下标
+返回值：小和的值
+*/
+int mergeSort(vector<int>& arr, int l, int r)
+{
+	if (l == r)
+	{
+		return 0;
+	}
+	int mid = l + ((r - l) >> 1);
+	return mergeSort(arr, l, mid) + mergeSort(arr, mid+1, r)+merge(arr,l,mid,r);
+}
+/*
+*在一个数组中，每一个数左边比当前数小的数累加起来，叫做这个数组的小和
+*/
+int smallSum(vector<int>& arr) {
+	if (arr.size() < 2) {
+		return 0;
+	}
+	return mergeSort(arr, 0, arr.size() - 1);
+}

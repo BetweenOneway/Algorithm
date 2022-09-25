@@ -18,3 +18,10 @@ void verifyExamicQuestions()
 	cout << "Found 2 numbers:";
 	printVector(ret2);
 }
+
+void verifySmallSum()
+{
+	vector<int> verifyData{ 1,3,4,2,5 };
+	int ret = smallSum(verifyData);
+	cout << "small sum=" << ret << endl;
+}
