@@ -142,7 +142,7 @@ vector<int> netherlandNationalFlag(vector<int>& toSort, int l, int r)
 		if (toSort[l]<toSort[r])
 		{
 			//这里l++是因为两种情况
-			//1种换的值紧邻左侧小于区，所以换完之后要+1
+			//1种换的值紧邻左侧小于区，还完之后，l指向小于区内的最右侧值，所以换完之后要+1
 			//第二种，不靠近，则换过来的值一定属于等于区，且已经比较过了，所以也要+1
 			swap(toSort[++lessBorder], toSort[l++]);
 		}
@@ -151,6 +151,7 @@ vector<int> netherlandNationalFlag(vector<int>& toSort, int l, int r)
 			//这里的l不能++
 			//因为这里还完了之后原来右侧边界的那个值(原来moreBorder指向的值)并没有判断过
 			//所以l不能++
+			//或者说针对大于区域的交换，是换了个未知的数到l位置上，所以l不能++
 			swap(toSort[--moreBorder],toSort[l]);
 		}
 		else
