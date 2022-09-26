@@ -9,7 +9,7 @@ using namespace std;
 int main()
 {
 	
-	verifySmallSum();
+	verifySort();
 	system("pause");
 	return 0;
 }
