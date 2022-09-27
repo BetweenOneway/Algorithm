@@ -185,3 +185,82 @@ void quickSort(vector<int>& toSort)
 	}
 	quickSort(toSort, 0, toSort.size() - 1);
 }
+
+class BigRootHeap
+{
+private:
+	vector<int> heap;
+public:
+	BigRootHeap() = default;
+	void HeapInsert(int val);
+	void Heapify();
+	int popTop();
+};
+
+void BigRootHeap::HeapInsert(int val)
+{
+	heap.push_back(val);
+	int index = heap.size()-1;
+	while (heap[index] > heap[(index - 1) / 2])
+	{
+		swap(heap[index], heap[(index - 1) / 2]);
+		index = (index - 1) / 2;
+	}
+}
+void BigRootHeap::Heapify()
+{
+	int startIndex = 0;
+	int left = startIndex * 2 + 1;
+	while (left < heap.size())
+	{
+		int largest = left;
+		//如果存在右节点，则先比较左右两个子节点，取较大的节点
+		if (left + 1 < heap.size())
+		{
+			largest = heap[left] > heap[left + 1] ? left : left + 1;
+		}
+		//将左右节点中的较大值和父节点比较，取较大的那个
+		largest = heap[startIndex] > heap[largest] ? startIndex : largest;
+		if (largest == startIndex)
+		{
+			break;
+		}
+		swap(heap[startIndex], heap[largest]);
+		startIndex = largest;
+		left = startIndex * 2 + 1;
+	}
+}
+int BigRootHeap::popTop()
+{
+	int ret = heap[0];
+	int lastChild = heap.size() - 1;
+	//需要先将要删除的节点挪到最后，然后删除最后的节点
+	//如果直接删除第一个节点，则按组织规则第二个节点会成为头节点，会打乱堆，导致结果出错
+	swap(heap[0], heap[lastChild]);
+	heap.erase(--heap.end());
+	if (!heap.empty())
+	{
+		Heapify();
+	}
+	
+	return ret;
+}
+
+void heapSort(vector<int>& toSort)
+{
+	if (toSort.size() < 2)
+	{
+		return;
+	}
+	BigRootHeap bigRootHeap;
+	auto heapInsert = [&bigRootHeap](int& val) {
+		bigRootHeap.HeapInsert(val); 
+	};
+	for_each(toSort.begin(), toSort.end(), heapInsert);
+
+	int size = toSort.size()-1;
+	while (size >= 0)
+	{
+		toSort[size--] = bigRootHeap.popTop();
+	}
+}

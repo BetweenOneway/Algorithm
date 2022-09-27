@@ -57,9 +57,19 @@ void testQuickSort()
 	printVector(data);
 }
 
+void testHeapSort()
+{
+	vector<int> data;
+	generateVerifyData(data, 0, 10, 10);
+	cout << "before sort" << endl;
+	printVector(data);
+	heapSort(data);
+	cout << "after sort" << endl;
+	printVector(data);
+}
 void verifySort()
 {
 	//testMergeSort();
 	//testInsertSort();
-	testQuickSort();
+	testHeapSort();
 }
