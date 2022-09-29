@@ -18,7 +18,14 @@ public:
 	void setRightChild(shared_ptr<Node>&& rc);
 	shared_ptr<Node> getRightChild();
 };
+
 shared_ptr<Node> vector2BinaryTree(vector<int>& data);
+
 vector<int> preOrderRecur(shared_ptr<Node>& root);
+vector<int> preOrderUnrecur(shared_ptr<Node> root);
+
 vector<int> inOrderRecur(shared_ptr<Node>& root);
+vector<int> inOrderUnrecur(shared_ptr<Node>& root);
+
 vector<int> postOrderRecur(shared_ptr<Node>& root);
+vector<int> postOrderUnrecur(shared_ptr<Node>& root);
