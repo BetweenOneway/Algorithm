@@ -23,7 +23,7 @@ void Node::setLeftChild(shared_ptr<Node>&& lc)
 {
 	leftChild = lc;
 }
-shared_ptr<Node>& Node::getLeftChild()
+shared_ptr<Node> Node::getLeftChild()
 {
 	return leftChild;
 }
@@ -31,7 +31,7 @@ void Node::setRightChild(shared_ptr<Node>&& rc)
 {
 	rightChild = rc;
 }
-shared_ptr<Node>& Node::getRightChild()
+shared_ptr<Node> Node::getRightChild()
 {
 	return rightChild;
 }
@@ -72,23 +72,66 @@ shared_ptr<Node> vector2BinaryTree(vector<int>& data)
 	return root;
 }
 
-void preOrder(shared_ptr<Node> node,vector<int>& storage)
+void preOrderRecur(shared_ptr<Node> node,vector<int>& storage)
 {
 	if (!node)
 	{
 		return;
 	}
 	storage.push_back(node->getValue());
-	preOrder(node->getLeftChild(), storage);
-	preOrder(node->getRightChild(), storage);
+	preOrderRecur(node->getLeftChild(), storage);
+	preOrderRecur(node->getRightChild(), storage);
 }
 //二叉树的先序遍历
-vector<int> getPreOrderRecur(shared_ptr<Node>& root)
+vector<int> preOrderRecur(shared_ptr<Node>& root)
 {
 	vector<int> storage;
 	if (root)
 	{
-		preOrder(root, storage);
+		preOrderRecur(root, storage);
+	}
+	return storage;
+}
+
+//二叉树的中序遍历--递归
+void inOrderRecur(shared_ptr<Node> node, vector<int>& storage)
+{
+	if (!node)
+	{
+		return;
+	}
+	
+	inOrderRecur(node->getLeftChild(), storage);
+	storage.push_back(node->getValue());
+	inOrderRecur(node->getRightChild(), storage);
+}
+vector<int> inOrderRecur(shared_ptr<Node>& root)
+{
+	vector<int> storage;
+	if (root)
+	{
+		inOrderRecur(root, storage);
+	}
+	return storage;
+}
+//二叉树的后续遍历--递归
+void postOrderRecur(shared_ptr<Node> node, vector<int>& storage)
+{
+	if (!node)
+	{
+		return;
+	}
+	
+	postOrderRecur(node->getLeftChild(), storage);
+	postOrderRecur(node->getRightChild(), storage);
+	storage.push_back(node->getValue());
+}
+vector<int> postOrderRecur(shared_ptr<Node>& root)
+{
+	vector<int> storage;
+	if (root)
+	{
+		postOrderRecur(root, storage);
 	}
 	return storage;
 }

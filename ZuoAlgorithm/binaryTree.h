@@ -14,9 +14,11 @@ public:
 	int getValue();
 	int getIndex();
 	void setLeftChild(shared_ptr<Node>&& lc);
-	shared_ptr<Node>& getLeftChild();
+	shared_ptr<Node> getLeftChild();
 	void setRightChild(shared_ptr<Node>&& rc);
-	shared_ptr<Node>& getRightChild();
+	shared_ptr<Node> getRightChild();
 };
 shared_ptr<Node> vector2BinaryTree(vector<int>& data);
-vector<int> getPreOrderRecur(shared_ptr<Node>& root);
+vector<int> preOrderRecur(shared_ptr<Node>& root);
+vector<int> inOrderRecur(shared_ptr<Node>& root);
+vector<int> postOrderRecur(shared_ptr<Node>& root);

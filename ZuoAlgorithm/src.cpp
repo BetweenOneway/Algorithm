@@ -9,6 +9,8 @@ using namespace std;
 int main()
 {
 	verifyPreOrder();
+	verifyInOrder();
+	verifyPostOrder();
 	system("pause");
 	return 0;
 }
