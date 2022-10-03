@@ -6,13 +6,15 @@
 using namespace std;
 #include "verifyBinaryTree.h"
 #include "verifyBinarySearch.h"
+#include "verifyForceRecursive.h"
 
 int main()
 {
 	//verifyPreOrder();
 	//verifyInOrder();
 	//verifyPostOrder();
-	verifyGetPeakElemement();
+	//verifyGetPeakElemement();
+	verifyGetAllSubStr();
 	system("pause");
 	return 0;
 }

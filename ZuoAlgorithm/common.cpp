@@ -12,12 +12,7 @@ void swap(int& i, int& j)
 	i = i^j;
 }
 
-void printVector(vector<int>& dataSource)
-{
-	auto f = [](int it) {cout << it << " "; };
-	for_each(dataSource.begin(), dataSource.end(), f);
-	cout << endl;
-}
+
 
 void generateVerifyData(vector<int>& dataSource, int minNum, int maxNum, unsigned int num)
 {
