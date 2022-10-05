@@ -34,6 +34,10 @@ Node* revertLinkedListWithStack(Node* head)
 
 Node* revertLinkedList(Node* head)
 {
+	if (!head)
+	{
+		return head;
+	}
 	Node* prev = nullptr;
 	Node* next = head->next;
 	while (next)
