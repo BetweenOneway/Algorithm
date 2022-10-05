@@ -12,7 +12,12 @@ void swap(int& i, int& j)
 	i = i^j;
 }
 
-
+void swap(string& src, int srcPos, int destPos)
+{
+	char temp = src[srcPos];
+	src[srcPos] = src[destPos];
+	src[destPos] = temp;
+}
 
 void generateVerifyData(vector<int>& dataSource, int minNum, int maxNum, unsigned int num)
 {

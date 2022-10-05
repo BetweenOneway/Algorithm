@@ -14,7 +14,9 @@ int main()
 	//verifyInOrder();
 	//verifyPostOrder();
 	//verifyGetPeakElemement();
-	verifyGetAllSubStr();
+	//verifyGetAllSubStr();
+	//verifyGetAllPossibleStr();
+	verifyPlayCards();
 	system("pause");
 	return 0;
 }
