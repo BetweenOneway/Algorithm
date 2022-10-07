@@ -93,3 +93,7 @@ int smallSum(vector<int>& arr) {
 	}
 	return mergeSort(arr, 0, arr.size() - 1);
 }
+/*
+打印两个有序链表的公共部分
+谁小谁移动；相等打印，共同移动；越界结束
+*/
