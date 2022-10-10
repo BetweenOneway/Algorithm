@@ -7,6 +7,7 @@ using namespace std;
 #include "verifyBinaryTree.h"
 #include "verifyBinarySearch.h"
 #include "verifyForceRecursive.h"
+#include "verifyStr.h"
 
 int main()
 {
@@ -16,7 +17,9 @@ int main()
 	//verifyGetPeakElemement();
 	//verifyGetAllSubStr();
 	//verifyGetAllPossibleStr();
-	verifyPlayCards();
+	//verifyPlayCards();
+	//verifyKMP();
+	verifyManacher();
 	system("pause");
 	return 0;
 }
